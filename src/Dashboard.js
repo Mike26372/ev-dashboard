@@ -1,63 +1,7 @@
 import { Component, useState } from "react";
 import Papa from "papaparse";
-
-const TripsPicker = ({ trips = [], exampleVehicle }) => {
-  if (!trips.length) return null;
-
-  return (
-    <div className="vehicle-container">
-      {trips.map((trip, index) => (
-        <SelectedTrip key={index} trip={trip} />
-      ))}
-    </div>
-  );
-};
-
-const SelectedTrip = ({ trip }) => {
-  return (
-    <div className="vehicle-item">
-      {trip.make}, {trip.model}, {trip.year}
-    </div>
-  );
-};
-
-const TargetFiltering = ({ inputs, selectedTrip, benchmarkVehicle }) => {
-  return (
-    <div>
-      <BenchmarkVehicle benchmarkVehicle={benchmarkVehicle} />
-      {inputs.map((input) => (
-        <TargetVehicle
-          key={
-            input.year + input.make + input.model + input.series + input.style
-          }
-          input={input}
-          benchmarkVehicle={benchmarkVehicle}
-          trip={selectedTrip}
-        />
-      ))}
-    </div>
-  );
-};
-
-const TargetVehicle = ({ input, benchmarkVehicle, trip }) => {
-  const { make, model, year } = input;
-  const savings = calculateSavings(input, benchmarkVehicle, trip) || 0;
-
-  return (
-    <div>
-      {make} / {model} / {year} : {savings}
-    </div>
-  );
-};
-
-const BenchmarkVehicle = ({ benchmarkVehicle }) => {
-  const { make, model, year } = benchmarkVehicle;
-  return (
-    <div>
-      {make} / {model} / {year}
-    </div>
-  );
-};
+import TripsPicker from "./TripsPicker";
+import TargetFiltering from "./TargetFiltering";
 
 export default class Dashboard extends Component {
   constructor() {
@@ -136,41 +80,3 @@ const remappedHeaders = {
   "Total Range": "range",
   "Capacity (kWh)": "capacity_kwh",
 };
-
-const months = [
-  "jan",
-  "feb",
-  "mar",
-  "apr",
-  "may",
-  "jun",
-  "jul",
-  "aug",
-  "sep",
-  "oct",
-  "nov",
-  "dec",
-];
-
-const averages = {
-  co2_per_kwh: 0.9,
-  dollars_per_kwh: 0.14,
-  co2_per_gal: 19.59,
-  dollars_per_gal: 3.6,
-};
-
-function calculateSavings(target, benchmark, trip) {
-  const totalMiles = months.reduce(
-    (acc, curr) => acc + parseInt(trip[curr]),
-    0
-  );
-  // console.log(totalMiles);
-
-  const benchmarkGallonsConsumed = totalMiles / parseFloat(benchmark.mpg);
-  const targetKwhConsumed = totalMiles / parseFloat(target.mpkwh);
-
-  const benchmarkCost = benchmarkGallonsConsumed * averages.dollars_per_gal;
-  const targetCost = targetKwhConsumed * averages.dollars_per_kwh;
-
-  return benchmarkCost - targetCost;
-}
