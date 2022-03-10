@@ -3,25 +3,114 @@
   background-color: #f8f8f8;
   height: 100vh;
   width: 100vw;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  margin: 0;
+  justify-content: stretch;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  max-width: 1000px;
 }
 
 .vehicle-container {
   display: flex;
   flex-direction: column;
-  width: 80vw;
   padding: 30px;
+  margin: 0;
+  justify-content: stretch;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.trip-header {
+  align-self: flex-start;
+  font-size: 1.5em;
+}
+
+.trip-label {
+  padding-right: 20px;
+}
+
+.trip-input {
+  align-self: flex-start;
+  padding: 10px 0;
+}
+
+.card {
+  /* border: 1px solid grey; */
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background-color: white;
+  margin: 10px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .card:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+} */
+
+.vehicle-title {
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 .vehicle-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  padding: 5px;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  width: 100%;
 }
 
 .dashboard {
-  overflow: scroll;
+  overflow: overlay;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.month-container {
+  width: 16%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 2.5em;
+  padding: 5px 0;
+}
+
+.month {
+  font-size: medium;
+  color: grey;
+}
+
+.miles {
+  font-size: large;
+  padding: 5px 0;
+}
+
+.benchmarking-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.benchmarking-header {
 }

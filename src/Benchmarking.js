@@ -1,6 +1,7 @@
 const Benchmarking = ({ benchmarkVehicle }) => {
   return (
-    <div>
+    <div className="container benchmarking-container">
+      <div className="trip-header">Benchmarking Assumptions</div>
       <BenchmarkVehicle {...benchmarkVehicle} />
       <AveragesOverview />
     </div>

@@ -25,17 +25,19 @@ export default class Dashboard extends Component {
 
     const benchmarkVehicle = adjustedInputData[0];
     const inputs = adjustedInputData.slice(1);
-    console.log(inputs);
 
     // Fetch trips.csv
     const tripsResponse = await fetch("http://localhost:3001/trips");
     const tripsJson = await tripsResponse.json();
     const rawTripsData = Papa.parse(tripsJson.text).data;
     const trips = adjustCsvData(rawTripsData);
-    console.log(trips);
 
     this.setState({ inputs, trips, benchmarkVehicle });
   }
+
+  updateSelectedTripIndex = (index) => {
+    this.setState({ selectedTripIndex: index });
+  };
 
   render() {
     const {
@@ -47,7 +49,11 @@ export default class Dashboard extends Component {
     } = this.state;
     return (
       <div className="dashboard">
-        <TripsPicker trips={trips} exampleVehicle={exampleVehicle} />
+        <TripsPicker
+          trips={trips}
+          selectedTripIndex={selectedTripIndex}
+          updateSelectedTripIndex={this.updateSelectedTripIndex}
+        />
         <TargetFiltering
           inputs={inputs}
           selectedTrip={trips[selectedTripIndex]}
