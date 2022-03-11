@@ -65,6 +65,9 @@ export default class Dashboard extends Component {
     }
     return (
       <div className="dashboard flex-column">
+        <div className="dashboard-title">
+          Electronic Vehicle Savings Estimator
+        </div>
         <TripsSelector
           trips={trips}
           selectedTripIndex={selectedTripIndex}
