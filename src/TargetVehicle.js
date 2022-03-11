@@ -14,7 +14,9 @@ const TargetVehicle = ({ input, benchmarkVehicle, trip }) => {
     series,
     style,
   } = input;
+
   const savings = calculateSavings(input, benchmarkVehicle, trip) || 0;
+  const co2Decrease = calculateCo2Decrease(input, benchmarkVehicle, trip) || 0;
 
   return (
     <div className="target-container">
@@ -61,8 +63,10 @@ const TargetVehicle = ({ input, benchmarkVehicle, trip }) => {
             <div className="target-savings-label">per year</div>
           </div>
           <div className="target-savings-output">
-            <div className="target-savings-amount">{20.02}</div>
-            <div className="target-savings-label">lbs CO2 per year</div>
+            <div className="target-savings-amount">
+              {Math.round(co2Decrease)}%
+            </div>
+            <div className="target-savings-label">decrease Co2 emissions</div>
           </div>
         </div>
       </div>
@@ -82,10 +86,7 @@ export const TargetSummaryItem = ({ label, data, type }) => {
 
 // Calculates savings per year based on national averages
 function calculateSavings(target, benchmark, trip) {
-  const totalMiles = months.reduce(
-    (acc, curr) => acc + parseInt(trip[curr]),
-    0
-  );
+  const totalMiles = calculateTotalMiles(trip);
 
   const benchmarkGallonsConsumed = totalMiles / parseFloat(benchmark.mpg);
   const targetKwhConsumed = totalMiles / parseFloat(target.mpkwh);
@@ -94,6 +95,24 @@ function calculateSavings(target, benchmark, trip) {
   const targetCost = targetKwhConsumed * averages.dollars_per_kwh;
 
   return benchmarkCost - targetCost;
+}
+
+function calculateCo2Decrease(target, benchmark, trip) {
+  const totalMiles = calculateTotalMiles(trip);
+
+  const benchmarkGallonsConsumed = totalMiles / parseFloat(benchmark.mpg);
+  const targetKwhConsumed = totalMiles / parseFloat(target.mpkwh);
+
+  const benchmarkCo2Generated = benchmarkGallonsConsumed * averages.co2_per_gal;
+  const targetCo2Generated = targetKwhConsumed * averages.co2_per_kwh;
+
+  return (
+    ((benchmarkCo2Generated - targetCo2Generated) / benchmarkCo2Generated) * 100
+  );
+}
+
+function calculateTotalMiles(trip) {
+  return months.reduce((acc, curr) => acc + parseInt(trip[curr]), 0);
 }
 
 export default TargetVehicle;

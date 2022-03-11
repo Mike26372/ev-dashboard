@@ -13,7 +13,7 @@ const Benchmarking = ({ benchmarkVehicle }) => {
   );
 };
 
-const BenchmarkVehicle = ({ make, model, year, fuel_type, range }) => {
+const BenchmarkVehicle = ({ make, model, year, fuel_type, mpg }) => {
   return (
     <div className="target-overview card">
       <div className="target-column target-column-left">
@@ -27,7 +27,7 @@ const BenchmarkVehicle = ({ make, model, year, fuel_type, range }) => {
       <div className="target-column target-column-right">
         <div className="target-row">
           <TargetSummaryItem label="Fuel Type" data={fuel_type} type={2} />
-          <TargetSummaryItem label="Range (mi)" data={range} type={2} />
+          <TargetSummaryItem label="MPG" data={mpg} type={2} />
         </div>
       </div>
     </div>
