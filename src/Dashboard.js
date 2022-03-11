@@ -2,12 +2,14 @@ import { Component } from "react";
 import Papa from "papaparse";
 import TripsSelector from "./TripsSelector";
 import TargetFiltering from "./TargetFiltering";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default class Dashboard extends Component {
   constructor() {
     super();
 
     this.state = {
+      isLoading: false,
       selectedTripIndex: 0,
       benchmarkVehicle: {},
       inputs: [],
@@ -16,6 +18,8 @@ export default class Dashboard extends Component {
   }
 
   async componentDidMount() {
+    this.setState({ isLoading: true });
+
     // Fetch inputs.csv
     const inputsResponse = await fetch("http://localhost:3001/inputs");
     const inputsJson = await inputsResponse.json();
@@ -31,7 +35,10 @@ export default class Dashboard extends Component {
     const rawTripsData = Papa.parse(tripsJson.text).data;
     const trips = adjustCsvData(rawTripsData);
 
-    this.setState({ inputs, trips, benchmarkVehicle });
+    // Simulate a 1 second load time
+    await setTimeoutAsync(1000);
+
+    this.setState({ inputs, trips, benchmarkVehicle, isLoading: false });
   }
 
   updateSelectedTripIndex = (index) => {
@@ -39,7 +46,16 @@ export default class Dashboard extends Component {
   };
 
   render() {
-    const { selectedTripIndex, inputs, trips, benchmarkVehicle } = this.state;
+    const { selectedTripIndex, inputs, trips, benchmarkVehicle, isLoading } =
+      this.state;
+
+    if (isLoading) {
+      return (
+        <div className="dashboard">
+          <LoadingSpinner />
+        </div>
+      );
+    }
     return (
       <div className="dashboard">
         <TripsSelector
@@ -79,4 +95,12 @@ const remappedHeaders = {
   "Miles per gallon": "mpg",
   "Total Range": "range",
   "Capacity (kWh)": "capacity_kwh",
+};
+
+const setTimeoutAsync = (timeoutInMs) => {
+  return new Promise((res) => {
+    setTimeout(() => {
+      res();
+    }, timeoutInMs);
+  });
 };
