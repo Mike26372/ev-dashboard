@@ -20,25 +20,32 @@ export default class Dashboard extends Component {
   async componentDidMount() {
     this.setState({ isLoading: true });
 
-    // Fetch inputs.csv
-    const inputsResponse = await fetch("http://localhost:3001/inputs");
-    const inputsJson = await inputsResponse.json();
-    const rawInputsData = Papa.parse(inputsJson.text).data;
-    const adjustedInputData = adjustCsvData(rawInputsData);
-
-    const benchmarkVehicle = adjustedInputData[0];
-    const inputs = adjustedInputData.slice(1);
-
-    // Fetch trips.csv
-    const tripsResponse = await fetch("http://localhost:3001/trips");
-    const tripsJson = await tripsResponse.json();
-    const rawTripsData = Papa.parse(tripsJson.text).data;
-    const trips = adjustCsvData(rawTripsData);
-
     // Simulate a 1 second load time
     await setTimeoutAsync(1000);
 
-    this.setState({ inputs, trips, benchmarkVehicle, isLoading: false });
+    try {
+      // Fetch inputs.csv
+      const inputsResponse = await fetch("http://localhost:3001/inputs");
+      const inputsJson = await inputsResponse.json();
+      const rawInputsData = Papa.parse(inputsJson.text).data;
+      const adjustedInputData = adjustCsvData(rawInputsData);
+
+      const benchmarkVehicle = adjustedInputData[0];
+      const inputs = adjustedInputData.slice(1);
+
+      // Fetch trips.csv
+      const tripsResponse = await fetch("http://localhost:3001/trips");
+      const tripsJson = await tripsResponse.json();
+      const rawTripsData = Papa.parse(tripsJson.text).data;
+      const trips = adjustCsvData(rawTripsData);
+
+      this.setState({ inputs, trips, benchmarkVehicle, isLoading: false });
+    } catch (e) {
+      // If error is caught, log the error and remove loading spinner.
+      //Error messages will be displayd where data is not available
+      console.error(e);
+      this.setState({ isLoading: false });
+    }
   }
 
   updateSelectedTripIndex = (index) => {
