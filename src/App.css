@@ -21,11 +21,34 @@
   overflow: overlay;
   width: 100vw;
   align-items: center;
+  background-color: #f8f8f8;
+}
+
+/* Add some basic media width so the app does not squish. This will not be 
+mobile responsive but will keep the app readable on small devices */
+@media only screen and (max-width: 750px) {
+  .app {
+    width: 750px;
+  }
+
+  .dashboard {
+    width: 750px;
+  }
+
+  .vehicle-container {
+    width: 750px;
+  }
+
+  .container {
+    width: 750px;
+    margin: 0 20px !important;
+  }
 }
 
 .dashboard-title {
   font-size: 3em;
   padding: 1em 0;
+  text-align: center;
 }
 
 .hr-style {
@@ -48,6 +71,7 @@
   align-content: center;
   width: 100%;
   max-width: 1000px;
+  min-width: 750px;
 }
 
 .vehicle-container {
