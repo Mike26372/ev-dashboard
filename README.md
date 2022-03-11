@@ -16,4 +16,4 @@ In your terminal and within the project directory, run `npm start`. Once the bui
 
 ### API Setup
 
-In another terminal window from the same directory, run `npm run start-server`. This will launch a mock server at `http://localhost:3001` to provide input data for trips and vehicle data.
+In another terminal window from the same directory, run `npm run start-server`. This will launch a mock server at `http://localhost:3001` to provide input data for trips and vehicle selection.
