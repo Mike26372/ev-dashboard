@@ -1,6 +1,6 @@
 # Electric Vehicle Cost Comparison Dashboard
 
-This dashboard provides example trip data to help users estimate their potential dollar savings and emission reduction compared to a benchmark gasoline vehicle (Audi Q5, 2019).
+This dashboard provides example trip data to help users estimate their potential dollar savings and emission reduction compared to a benchmark gasoline vehicle (Audi Q7, 2019).
 
 To simulate your estimated travel, select an example trip using the dropdown provided to select an estimated monthly distance traveled. These distances will be used to calculate your estimated savings.
 
