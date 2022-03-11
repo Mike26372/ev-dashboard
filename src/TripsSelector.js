@@ -8,7 +8,7 @@ const TripsSelector = ({
   if (!trips.length)
     return (
       <div className="vehicle-container flex-column">
-        <div className="trip-header">
+        <div className="trip-header blue-text">
           Example Trip: Miles Traveled Each Month
         </div>
         <div className="error-text">Error fetching Example Trip data</div>
@@ -17,7 +17,9 @@ const TripsSelector = ({
 
   return (
     <div className="vehicle-container flex-column">
-      <div className="trip-header">Example Trip: Miles Traveled Each Month</div>
+      <div className="trip-header blue-text">
+        Example Trip: Miles Traveled Each Month
+      </div>
       <div className="trip-input">
         <label className="trip-label" htmlFor="trips">
           Select an example trip:

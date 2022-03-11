@@ -28,6 +28,20 @@
   padding: 1em 0;
 }
 
+.hr-style {
+  border-top: 1px solid rgb(35, 48, 119);
+  /* border-top: 1px solid rgb(142, 54, 236); */
+  width: 80%;
+}
+
+.purple-text {
+  color: rgb(142, 54, 236);
+}
+
+.blue-text {
+  color: rgb(35, 48, 119);
+}
+
 .container {
   margin: 0;
   justify-content: stretch;
@@ -38,7 +52,7 @@
 }
 
 .vehicle-container {
-  padding-top: 30px;
+  /* padding-top: 30px; */
   margin: 0;
   justify-content: stretch;
   align-items: center;

@@ -59,11 +59,13 @@ const TargetVehicle = ({ input, benchmarkVehicle, trip }) => {
         <div className="target-savings-title">Estimated Savings</div>
         <div className="target-savings-output-container flex-row">
           <div className="target-savings-output">
-            <div className="target-savings-amount">${Math.round(savings)}</div>
+            <div className="target-savings-amount purple-text">
+              ${Math.round(savings)}
+            </div>
             <div className="target-savings-label">per year</div>
           </div>
           <div className="target-savings-output">
-            <div className="target-savings-amount">
+            <div className="target-savings-amount blue-text">
               {Math.round(co2Decrease)}%
             </div>
             <div className="target-savings-label">decrease Co2 emissions</div>

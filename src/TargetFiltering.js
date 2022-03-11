@@ -33,7 +33,7 @@ const TargetFiltering = ({ inputs = [], selectedTrip, benchmarkVehicle }) => {
   return (
     <div className="container flex-column">
       <Benchmarking benchmarkVehicle={benchmarkVehicle} />
-      <div className="trip-header">Cost Comparison</div>
+      <div className="trip-header blue-text">Cost Comparison</div>
       <div className="target-text">
         Use the provided filters to select your desired vehicle and calculate
         your estimated savings

@@ -5,7 +5,7 @@ const Benchmarking = ({ benchmarkVehicle }) => {
   if (!Object.keys(benchmarkVehicle).length) {
     return (
       <div className="container flex-column">
-        <div className="trip-header">Benchmarking Assumptions</div>
+        <div className="trip-header blue-text">Benchmarking Assumptions</div>
         <div className="target-container flex-row">
           <div className="error-text">
             Error fetching benchmarking information
@@ -16,7 +16,7 @@ const Benchmarking = ({ benchmarkVehicle }) => {
   }
   return (
     <div className="container flex-column">
-      <div className="trip-header">Benchmarking Assumptions</div>
+      <div className="trip-header blue-text">Benchmarking Assumptions</div>
       <div className="target-container flex-row">
         <BenchmarkVehicle {...benchmarkVehicle} />
         <AveragesOverview {...averages} />
