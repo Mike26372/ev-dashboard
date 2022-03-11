@@ -1,6 +1,6 @@
-import { Component, useState } from "react";
+import { Component } from "react";
 import Papa from "papaparse";
-import TripsPicker from "./TripsPicker";
+import TripsSelector from "./TripsSelector";
 import TargetFiltering from "./TargetFiltering";
 
 export default class Dashboard extends Component {
@@ -8,7 +8,6 @@ export default class Dashboard extends Component {
     super();
 
     this.state = {
-      exampleVehicle: {},
       selectedTripIndex: 0,
       benchmarkVehicle: {},
       inputs: [],
@@ -40,16 +39,10 @@ export default class Dashboard extends Component {
   };
 
   render() {
-    const {
-      exampleVehicle,
-      selectedTripIndex,
-      inputs,
-      trips,
-      benchmarkVehicle,
-    } = this.state;
+    const { selectedTripIndex, inputs, trips, benchmarkVehicle } = this.state;
     return (
       <div className="dashboard">
-        <TripsPicker
+        <TripsSelector
           trips={trips}
           selectedTripIndex={selectedTripIndex}
           updateSelectedTripIndex={this.updateSelectedTripIndex}
@@ -80,6 +73,7 @@ function adjustCsvData(trips) {
 }
 
 const remappedHeaders = {
+  "Fuel Type": "fuel_type",
   "MPGe (Note that this is electric mpge for PHEVs)": "mpge",
   "Miles per kWh": "mpkwh",
   "Miles per gallon": "mpg",

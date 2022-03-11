@@ -6,6 +6,7 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  font-family: "Roboto", sans-serif;
 }
 
 .container {
@@ -53,6 +54,9 @@
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   background-color: white;
   margin: 10px 0;
+}
+
+.selected-trip-container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -105,6 +109,133 @@
 .miles {
   font-size: large;
   padding: 5px 0;
+}
+
+.target-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+}
+
+.target-overview {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 40px;
+  padding: 10px;
+}
+
+.target-text {
+  align-self: flex-start;
+  padding: 20px 0;
+}
+
+.target-filters {
+  align-self: flex-start;
+  padding: 5px 0;
+}
+
+.target-filters > select {
+  margin-right: 20px;
+}
+
+.target-details {
+  width: 70%;
+}
+
+.target-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.target-column-left {
+  width: 60%;
+}
+
+.target-column-right {
+  width: 40%;
+}
+
+.target-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 5px 0;
+}
+
+.target-summary {
+  /* width: 33%; */
+}
+
+.target-summary-1 {
+  width: 33%;
+}
+
+.target-summary-2 {
+  width: 50%;
+}
+
+.target-label {
+  font-size: 0.8em;
+  padding-bottom: 5px;
+  color: grey;
+}
+
+.target-data {
+}
+
+.target-capacity {
+  width: 40%;
+}
+
+.target-savings {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 10px;
+}
+
+.target-savings-title {
+  display: flex;
+  /* align-self: center; */
+  justify-content: center;
+  /* align-content: center; */
+  font-size: 1.2em;
+  width: 100%;
+  padding-bottom: 0.5em;
+}
+
+.target-savings-output-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-top: 10px;
+}
+
+.target-savings-output {
+  width: 50%;
+}
+
+.target-savings-amount {
+  font-size: 2.5em;
+  display: flex;
+  justify-content: center;
+}
+
+.target-savings-label {
+  display: flex;
+  font-size: 0.8em;
+  color: grey;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 .benchmarking-container {

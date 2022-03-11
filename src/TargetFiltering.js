@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Benchmarking from "./Benchmarking";
-
-import { months, averages } from "./constants";
+import TargetVehicle from "./TargetVehicle";
 
 const TargetFiltering = ({ inputs = [], selectedTrip, benchmarkVehicle }) => {
   const [make, setMake] = useState("");
@@ -35,29 +34,35 @@ const TargetFiltering = ({ inputs = [], selectedTrip, benchmarkVehicle }) => {
     <div className="container">
       <Benchmarking benchmarkVehicle={benchmarkVehicle} />
       <div className="trip-header">Cost Comparison</div>
-      <SelectForField
-        field="make"
-        value={make}
-        inputs={inputs}
-        setField={updateMake}
-      />
-      <SelectForField
-        field="model"
-        value={model}
-        inputs={inputs.filter((input) => input.make === make)}
-        setField={updateModel}
-        disabled={!make}
-      />
-      <SelectForField
-        field="year"
-        value={year}
-        inputs={inputs.filter(
-          (input) => input.make === make && input.model === model
-        )}
-        setField={setYear}
-        disabled={!make || !model}
-      />
-      <button onClick={clearSelection}>Clear</button>
+      <div className="target-text">
+        Use the provided filters to select your desired vehicle and calculate
+        your estimated savings
+      </div>
+      <div className="target-filters">
+        <SelectForField
+          field="make"
+          value={make}
+          inputs={inputs}
+          setField={updateMake}
+        />
+        <SelectForField
+          field="model"
+          value={model}
+          inputs={inputs.filter((input) => input.make === make)}
+          setField={updateModel}
+          disabled={!make}
+        />
+        <SelectForField
+          field="year"
+          value={year}
+          inputs={inputs.filter(
+            (input) => input.make === make && input.model === model
+          )}
+          setField={setYear}
+          disabled={!make || !model}
+        />
+        <button onClick={clearSelection}>Clear</button>
+      </div>
       {filteredInputs.map((input) => (
         <TargetVehicle
           key={
@@ -68,17 +73,6 @@ const TargetFiltering = ({ inputs = [], selectedTrip, benchmarkVehicle }) => {
           trip={selectedTrip}
         />
       ))}
-    </div>
-  );
-};
-
-const TargetVehicle = ({ input, benchmarkVehicle, trip }) => {
-  const { make, model, year } = input;
-  const savings = calculateSavings(input, benchmarkVehicle, trip) || 0;
-
-  return (
-    <div>
-      {make} / {model} / {year} : {savings}
     </div>
   );
 };
@@ -95,22 +89,6 @@ const SelectForField = ({ inputs, field, setField, value, disabled }) => {
     </select>
   );
 };
-
-// Calculates savings per year based on national averages
-function calculateSavings(target, benchmark, trip) {
-  const totalMiles = months.reduce(
-    (acc, curr) => acc + parseInt(trip[curr]),
-    0
-  );
-
-  const benchmarkGallonsConsumed = totalMiles / parseFloat(benchmark.mpg);
-  const targetKwhConsumed = totalMiles / parseFloat(target.mpkwh);
-
-  const benchmarkCost = benchmarkGallonsConsumed * averages.dollars_per_gal;
-  const targetCost = targetKwhConsumed * averages.dollars_per_kwh;
-
-  return benchmarkCost - targetCost;
-}
 
 // Pulls all possible options for filtering based on fieldName parameter and returns them in an array
 function getAllPossibleOptions(data, fieldName) {

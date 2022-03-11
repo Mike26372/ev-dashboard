@@ -1,6 +1,6 @@
 import { months } from "./constants";
 
-const TripsPicker = ({
+const TripsSelector = ({
   trips = [],
   selectedTripIndex,
   updateSelectedTripIndex,
@@ -32,7 +32,7 @@ const TripsPicker = ({
 
 const SelectedTrip = ({ trip }) => {
   return (
-    <div className="card">
+    <div className="card selected-trip-container">
       <div className="vehicle-title">
         {trip.make} {trip.model}, {trip.year}
       </div>
@@ -52,4 +52,4 @@ const Month = ({ name, value }) => (
   </div>
 );
 
-export default TripsPicker;
+export default TripsSelector;
