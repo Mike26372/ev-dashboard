@@ -63,16 +63,20 @@ const TargetFiltering = ({ inputs = [], selectedTrip, benchmarkVehicle }) => {
         />
         <button onClick={clearSelection}>Clear</button>
       </div>
-      {filteredInputs.map((input) => (
-        <TargetVehicle
-          key={
-            input.year + input.make + input.model + input.series + input.style
-          }
-          input={input}
-          benchmarkVehicle={benchmarkVehicle}
-          trip={selectedTrip}
-        />
-      ))}
+      {filteredInputs.length ? (
+        filteredInputs.map((input) => (
+          <TargetVehicle
+            key={
+              input.year + input.make + input.model + input.series + input.style
+            }
+            input={input}
+            benchmarkVehicle={benchmarkVehicle}
+            trip={selectedTrip}
+          />
+        ))
+      ) : (
+        <div className="error-text">Error fetching comparison vehicles</div>
+      )}
     </div>
   );
 };

@@ -5,7 +5,15 @@ const TripsSelector = ({
   selectedTripIndex,
   updateSelectedTripIndex,
 }) => {
-  if (!trips.length) return null;
+  if (!trips.length)
+    return (
+      <div className="vehicle-container">
+        <div className="trip-header">
+          Example Trip: Miles Traveled Each Month
+        </div>
+        <div className="error-text">Error fetching Example Trip data</div>
+      </div>
+    );
 
   return (
     <div className="vehicle-container">

@@ -246,3 +246,9 @@
 
 .benchmarking-header {
 }
+
+.error-text {
+  color: red;
+  align-self: flex-start;
+  padding: 1em 0;
+}

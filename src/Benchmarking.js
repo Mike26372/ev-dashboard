@@ -2,6 +2,18 @@ import { TargetSummaryItem } from "./TargetVehicle";
 import { averages } from "./constants";
 
 const Benchmarking = ({ benchmarkVehicle }) => {
+  if (!Object.keys(benchmarkVehicle).length) {
+    return (
+      <div className="container benchmarking-container">
+        <div className="trip-header">Benchmarking Assumptions</div>
+        <div className="target-container">
+          <div className="error-text">
+            Error fetching benchmarking information
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="container benchmarking-container">
       <div className="trip-header">Benchmarking Assumptions</div>
