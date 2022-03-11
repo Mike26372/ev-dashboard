@@ -1,5 +1,6 @@
 import { months } from "./constants";
 
+// Component allows user to select an example trip and displays trip data per month
 const TripsSelector = ({
   trips = [],
   selectedTripIndex,
@@ -40,6 +41,7 @@ const TripsSelector = ({
   );
 };
 
+// Displays the monthly trip data of the selected trip
 const SelectedTrip = ({ trip }) => {
   return (
     <div className="card selected-trip-container flex-column">

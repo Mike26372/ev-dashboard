@@ -1,6 +1,7 @@
 import { TargetSummaryItem } from "./TargetVehicle";
 import { averages } from "./constants";
 
+// Benchmarking container component
 const Benchmarking = ({ benchmarkVehicle }) => {
   if (!Object.keys(benchmarkVehicle).length) {
     return (
@@ -25,6 +26,7 @@ const Benchmarking = ({ benchmarkVehicle }) => {
   );
 };
 
+// Benchmark vehicle card displaying vehicle details
 const BenchmarkVehicle = ({ make, model, year, fuel_type, mpg }) => {
   return (
     <div className="target-overview card">
@@ -46,6 +48,7 @@ const BenchmarkVehicle = ({ make, model, year, fuel_type, mpg }) => {
   );
 };
 
+// Averages card displaying national averages used to calculate savings
 const AveragesOverview = () => (
   <div className="target-savings card flex-column">
     <div className="target-savings-title">National Averages</div>

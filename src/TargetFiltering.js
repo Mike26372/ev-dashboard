@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Benchmarking from "./Benchmarking";
 import TargetVehicle from "./TargetVehicle";
 
+// Manages all filtering based on user selection and updates the list of comparison vehicles
 const TargetFiltering = ({ inputs = [], selectedTrip, benchmarkVehicle }) => {
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
