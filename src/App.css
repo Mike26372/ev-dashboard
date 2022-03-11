@@ -1,17 +1,23 @@
 .app {
-  display: flex;
   background-color: #f8f8f8;
   height: 100vh;
   width: 100vw;
   justify-content: flex-start;
   align-items: center;
-  flex-direction: column;
   font-family: "Roboto", sans-serif;
 }
 
-.container {
+.flex-column {
   display: flex;
   flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.container {
   padding: 30px;
   margin: 0;
   justify-content: stretch;
@@ -22,8 +28,6 @@
 }
 
 .vehicle-container {
-  display: flex;
-  flex-direction: column;
   padding: 30px;
   margin: 0;
   justify-content: stretch;
@@ -58,8 +62,6 @@
 
 .selected-trip-container {
   width: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .vehicle-title {
@@ -68,8 +70,6 @@
 }
 
 .vehicle-item {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 10px 0;
@@ -83,15 +83,11 @@
 .dashboard {
   overflow: overlay;
   width: 100vw;
-  display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
 .month-container {
   width: 16%;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   height: 2.5em;
   padding: 5px 0;
@@ -108,8 +104,6 @@
 }
 
 .target-container {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
   width: 100%;
   padding: 10px;
@@ -164,10 +158,6 @@
   padding: 5px 0;
 }
 
-.target-summary {
-  /* width: 33%; */
-}
-
 .target-summary-1 {
   width: 33%;
 }
@@ -182,33 +172,24 @@
   color: grey;
 }
 
-.target-data {
-}
-
 .target-capacity {
   width: 40%;
 }
 
 .target-savings {
-  display: flex;
-  flex-direction: column;
   width: 30%;
   padding: 10px;
 }
 
 .target-savings-title {
   display: flex;
-  /* align-self: center; */
   justify-content: center;
-  /* align-content: center; */
   font-size: 1.2em;
   width: 100%;
   padding-bottom: 0.5em;
 }
 
 .target-savings-output-container {
-  display: flex;
-  flex-direction: row;
   align-items: flex-start;
   justify-content: center;
   height: 100%;
@@ -233,14 +214,6 @@
   align-items: center;
   align-content: center;
   text-align: center;
-}
-
-.benchmarking-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.benchmarking-header {
 }
 
 .error-text {

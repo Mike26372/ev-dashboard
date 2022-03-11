@@ -19,7 +19,7 @@ const TargetVehicle = ({ input, benchmarkVehicle, trip }) => {
   const co2Decrease = calculateCo2Decrease(input, benchmarkVehicle, trip) || 0;
 
   return (
-    <div className="target-container">
+    <div className="target-container flex-row">
       <div className="target-overview card">
         <div className="target-column target-column-left">
           <div className="target-row">
@@ -55,9 +55,9 @@ const TargetVehicle = ({ input, benchmarkVehicle, trip }) => {
           </div>
         </div>
       </div>
-      <div className="target-savings card">
+      <div className="target-savings card flex-column">
         <div className="target-savings-title">Estimated Savings</div>
-        <div className="target-savings-output-container">
+        <div className="target-savings-output-container flex-row">
           <div className="target-savings-output">
             <div className="target-savings-amount">${Math.round(savings)}</div>
             <div className="target-savings-label">per year</div>

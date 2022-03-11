@@ -51,13 +51,13 @@ export default class Dashboard extends Component {
 
     if (isLoading) {
       return (
-        <div className="dashboard">
+        <div className="dashboard flex-column">
           <LoadingSpinner />
         </div>
       );
     }
     return (
-      <div className="dashboard">
+      <div className="dashboard flex-column">
         <TripsSelector
           trips={trips}
           selectedTripIndex={selectedTripIndex}

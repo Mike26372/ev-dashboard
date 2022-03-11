@@ -1,9 +1,9 @@
-import './App.css';
-import Dashboard from './Dashboard';
+import "./App.css";
+import Dashboard from "./Dashboard";
 
 function App() {
   return (
-    <div className='app'>
+    <div className="app flex-column">
       <Dashboard />
     </div>
   );

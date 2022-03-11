@@ -4,9 +4,9 @@ import { averages } from "./constants";
 const Benchmarking = ({ benchmarkVehicle }) => {
   if (!Object.keys(benchmarkVehicle).length) {
     return (
-      <div className="container benchmarking-container">
+      <div className="container flex-column">
         <div className="trip-header">Benchmarking Assumptions</div>
-        <div className="target-container">
+        <div className="target-container flex-row">
           <div className="error-text">
             Error fetching benchmarking information
           </div>
@@ -15,9 +15,9 @@ const Benchmarking = ({ benchmarkVehicle }) => {
     );
   }
   return (
-    <div className="container benchmarking-container">
+    <div className="container flex-column">
       <div className="trip-header">Benchmarking Assumptions</div>
-      <div className="target-container">
+      <div className="target-container flex-row">
         <BenchmarkVehicle {...benchmarkVehicle} />
         <AveragesOverview {...averages} />
       </div>
@@ -47,9 +47,9 @@ const BenchmarkVehicle = ({ make, model, year, fuel_type, mpg }) => {
 };
 
 const AveragesOverview = () => (
-  <div className="target-savings card">
+  <div className="target-savings card flex-column">
     <div className="target-savings-title">National Averages</div>
-    <div className="target-savings-output-container">
+    <div className="target-savings-output-container flex-row">
       <div className="target-savings-output">
         <div className="target-savings-amount">
           ${averages.dollars_per_gal.toFixed(2)}
@@ -63,7 +63,7 @@ const AveragesOverview = () => (
         <div className="target-savings-label">lbs CO2 per gallon</div>
       </div>
     </div>
-    <div className="target-savings-output-container">
+    <div className="target-savings-output-container flex-row">
       <div className="target-savings-output">
         <div className="target-savings-amount">
           ${averages.dollars_per_kwh.toFixed(2)}

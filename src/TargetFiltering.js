@@ -31,7 +31,7 @@ const TargetFiltering = ({ inputs = [], selectedTrip, benchmarkVehicle }) => {
   };
 
   return (
-    <div className="container">
+    <div className="container flex-column">
       <Benchmarking benchmarkVehicle={benchmarkVehicle} />
       <div className="trip-header">Cost Comparison</div>
       <div className="target-text">
