@@ -86,6 +86,11 @@ export const TargetSummaryItem = ({ label, data, type }) => {
   );
 };
 
+/*
+ NOTE: These calculations do not properly take into account cars that require both 
+ gas and electricity. The calculations are for visualization purposes only.
+*/
+
 // Calculates savings per year based on national averages
 function calculateSavings(target, benchmark, trip) {
   const totalMiles = calculateTotalMiles(trip);
@@ -99,6 +104,7 @@ function calculateSavings(target, benchmark, trip) {
   return benchmarkCost - targetCost;
 }
 
+// Calculates emission savings per year based on national averages
 function calculateCo2Decrease(target, benchmark, trip) {
   const totalMiles = calculateTotalMiles(trip);
 
