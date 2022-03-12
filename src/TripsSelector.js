@@ -37,6 +37,10 @@ const TripsSelector = ({
         </select>
       </div>
       <SelectedTrip trip={trips[selectedTripIndex]} />
+      <div className="align-left padding-top text-italic">
+        This trip information will be used to estimate your yearly savings and
+        emissions reduction below
+      </div>
     </div>
   );
 };

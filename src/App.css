@@ -17,6 +17,19 @@
   flex-direction: row;
 }
 
+.align-left {
+  align-self: start;
+}
+
+.padding-top {
+  padding-top: 10px;
+}
+
+.text-italic {
+  font-style: italic;
+  font-weight: 300;
+}
+
 .dashboard {
   overflow: overlay;
   width: 100vw;

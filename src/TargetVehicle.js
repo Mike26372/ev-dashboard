@@ -68,7 +68,7 @@ const TargetVehicle = ({ input, benchmarkVehicle, trip }) => {
             <div className="target-savings-amount blue-text">
               {Math.round(co2Decrease)}%
             </div>
-            <div className="target-savings-label">decrease Co2 emissions</div>
+            <div className="target-savings-label">decrease CO2 emissions</div>
           </div>
         </div>
       </div>
